@@ -1,17 +1,17 @@
 Docker Sample for SQL Injection
 ===============================
 
-This docker image is already pushed to Docker Hub. Pull it.
+SQLインジェクション実践のためにフォームがあるアプリと、データベースをphpmyadminのセット。
+まずダウンロードしてビルド、そしてアップ。
 
-  $ docker pull matoba/sql_injection
+  $ docker-compose build
+  $ docker-compose up -d
 
-Run container with binding port.
+* アプリ: http://localhost:8686/select
+* DB(ID:root pw:): http://localhost:8687/
 
   $ docker run -d -p 80:80 --name sql_inj matoba/sql_injection
 
-HTTP access your docker environment(http://[IP address], IP: dokcer env [machine name]).
-A form appears and table name will be shown below the form. Enter some names, John, Tom... If there is a name, is entered, in DB, you can see row.
+商品を分類で絞って表示するようなシステムを想定している。フォームに"toy"と入れてEnterを押すと、それに対応したレコードが出てくる。そのフォームに下記の内容を入れてEnterを押すと、見えてほしくないテーブルの情報が表示される。
 
-You can try SQL Injection. Put words into form like below and back to "http://[IP address]". Table keeps exist?
-
-  John"; SELECT * FROM employees;DROP TABLE employees;"
+  toy';SELECT * FROM users WHERE id <> '
