@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+    <form action="/select" method="GET">
+        <input type="text" name="kind" value="{{ kind }}" />
+        <input type="submit" value="search" />
+    </form>
+
+    <div>
+    {% for item in items %}
+        <li>{{ item }}</li>
+    {% end %}
+    </div>
+
+    <div>
+        {{ error }}
+    </div>
+</body>
+</html>
