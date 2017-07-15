@@ -19,3 +19,5 @@ WORKDIR /usr/
 RUN dpkg -i mysql-connector-python-py3_2.1.3-1ubuntu14.04_all.deb
 
 EXPOSE 80
+CMD ['chmod +x ./hello.sh']
+CMD ['./hello.sh']
