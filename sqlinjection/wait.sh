@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -e
-
 echo "Waiting for mysql"
 until mysql -h db -u root; do
     >&2 echo "MySQL is unavailable - sleeping"
